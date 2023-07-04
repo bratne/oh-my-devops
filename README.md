@@ -10,10 +10,12 @@ Being able to run a single script to make a working machine with a dev env I fee
 
 ## Tools being installed
 
-* Git
-* Kubernetes
-* Minikube
-* Azure CLI
+* [Git](https://git-scm.com/)
+* [OhmyZsh](https://ohmyz.sh/)
+* [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/)
+* [Terraform](https://www.terraform.io/)
+* [Kubernetes](https://kubernetes.io/docs/home/)
+* [Minikube](https://minikube.sigs.k8s.io/docs/)
 
 ## Building a local image with docker
 
