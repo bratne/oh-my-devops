@@ -1,1 +1,1 @@
-sudo apt-get install -y ca-certificates curl
+sudo apt-get install -y ca-certificates curl --no-install-recommends

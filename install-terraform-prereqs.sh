@@ -1,1 +1,1 @@
-sudo apt-get install -y gnupg software-properties-common wget
+sudo apt-get install -y gnupg software-properties-common wget --no-install-recommends

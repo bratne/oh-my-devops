@@ -1,7 +1,7 @@
 ARG BASEOS=debian
 FROM $BASEOS
 RUN apt-get update
-RUN apt-get install -y sudo
+RUN apt-get install -y sudo --no-install-recommends
 
 ## Terraform installation
 ADD install-terraform-prereqs.sh .
@@ -19,8 +19,10 @@ RUN ./install-kubectl.sh .
 ADD install-kubectl-verify.sh .
 RUN ./install-kubectl-verify.sh .
 
-# Azure CLI installation
-RUN curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+# Azure CLI
+#RUN curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+RUN apt-get install -y python3-pip --no-install-recommends
+RUN pip3 install azure-cli --break-system-packages
 ADD install-az-verify.sh .
 RUN ./install-az-verify.sh .
 

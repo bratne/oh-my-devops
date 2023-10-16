@@ -1,1 +1,1 @@
-sudo apt-get install -y ca-certificates curl gnupg
+sudo apt-get install -y ca-certificates curl gnupg --no-install-recommends
