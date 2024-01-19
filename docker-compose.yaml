@@ -1,7 +1,0 @@
-services:
-    oh-my-devops:
-        build:
-            ./images/base
-    oh-my-devops-node:
-        build:
-            ./images/with-node

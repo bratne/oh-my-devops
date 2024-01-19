@@ -17,8 +17,20 @@ Being able to run a single script to make a working machine with a dev env I fee
 * [Kubernetes](https://kubernetes.io/docs/home/)
 * [Minikube](https://minikube.sigs.k8s.io/docs/)
 
-## Building a local image with docker
+## Building
+
+    make build
+
+## Individual images
+
+### Base image
 
     cd images/base
     docker build -t oh-my-devops .
+
     sudo docker run --rm --name mydev -it -v /var/run/docker.sock:/var/run/docker.sock --entrypoint /bin/zsh oh-my-devops
+
+### NPM image
+
+    cd images/with-node
+    docker build -t oh-my-devops-node .
