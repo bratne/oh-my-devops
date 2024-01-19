@@ -19,5 +19,6 @@ Being able to run a single script to make a working machine with a dev env I fee
 
 ## Building a local image with docker
 
-    docker build -t mydevenv .
-    sudo docker run --rm --name mydev -it -v /var/run/docker.sock:/var/run/docker.sock --entrypoint /bin/zsh mydevenv
+    cd images/base
+    docker build -t oh-my-devops .
+    sudo docker run --rm --name mydev -it -v /var/run/docker.sock:/var/run/docker.sock --entrypoint /bin/zsh oh-my-devops
