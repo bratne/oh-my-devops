@@ -10,13 +10,22 @@ Being able to run a single script to make a working machine with a dev env I fee
 
 ## Tools being installed
 
-* [Git](https://git-scm.com/)
-* [OhmyZsh](https://ohmyz.sh/)
-* [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/)
-* [Terraform](https://www.terraform.io/)
-* [Kubernetes](https://kubernetes.io/docs/home/)
-* [Minikube](https://minikube.sigs.k8s.io/docs/)
+* Base image - "oh-my-devops"
 
+    * [Git](https://git-scm.com/)
+    * [OhmyZsh](https://ohmyz.sh/)
+    * [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/)
+    * [Terraform](https://www.terraform.io/)
+    * [Kubernetes](https://kubernetes.io/docs/home/)
+    * [Minikube](https://minikube.sigs.k8s.io/docs/)
+
+* Node image - "oh-my-devops-node"
+
+    * [Node Version Manager](https://github.com/nvm-sh/nvm)
+    * [Node.js](https://nodejs.org/en)
+    * [npm](https://docs.npmjs.com/about-npm/)
+    * [Yarn](https://yarnpkg.com/)
+    
 ## Building
 
     make build

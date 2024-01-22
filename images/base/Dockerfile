@@ -3,6 +3,8 @@ FROM $BASEOS
 RUN apt-get update
 RUN apt-get install -y sudo --no-install-recommends
 
+WORKDIR /src
+
 ## Terraform installation
 ADD install-terraform-prereqs.sh .
 RUN ./install-terraform-prereqs.sh
@@ -37,5 +39,9 @@ RUN ./install-minikube-verify.sh
 ADD install-ohmyzsh-prereqs.sh .
 RUN ./install-ohmyzsh-prereqs.sh
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) "
+RUN chsh -s /usr/bin/zsh
+# Enabling some default plugins. Might be moved later
+RUN sed -i 's/^plugins=.*/plugins=(git kubectl azure)/g' $HOME/.zshrc
+WORKDIR /git
 
 #TODO: Add Docker installation
