@@ -41,7 +41,7 @@ RUN ./install-ohmyzsh-prereqs.sh
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) "
 RUN chsh -s /usr/bin/zsh
 # Enabling some default plugins. Might be moved later
-RUN sed -i 's/^plugins=.*/plugins=(git kubectl azure)/g' $HOME/.zshrc
+RUN sed -i 's/^plugins=.*/plugins=(git kubectl azure terraform)/g' $HOME/.zshrc
 WORKDIR /git
 
 #TODO: Add Docker installation
