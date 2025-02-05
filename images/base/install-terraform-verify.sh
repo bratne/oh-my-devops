@@ -1,1 +1,1 @@
-echo `terraform --version`
+terraform --version

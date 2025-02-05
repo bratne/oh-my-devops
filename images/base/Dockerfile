@@ -23,8 +23,9 @@ RUN ./install-kubectl-verify.sh .
 
 # Azure CLI
 #RUN curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-RUN apt-get install -y python3-pip --no-install-recommends
-RUN pip3 install azure-cli --break-system-packages
+#RUN apt-get install -y python3-pip --no-install-recommends
+#RUN pip3 install azure-cli --break-system-packages
+RUN apt-get -y install azure-cli --no-install-recommends
 ADD install-az-verify.sh .
 RUN ./install-az-verify.sh .
 
@@ -35,13 +36,20 @@ RUN ./install-minikube.sh
 ADD install-minikube-verify.sh .
 RUN ./install-minikube-verify.sh
 
-# Install oh-my-zsh
-ADD install-ohmyzsh-prereqs.sh .
-RUN ./install-ohmyzsh-prereqs.sh
+## USER INITIALIZATION
+
+RUN apt-get -y install neovim --no-install-recommends
+
+USER neo
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) "
-RUN chsh -s /usr/bin/zsh
 # Enabling some default plugins. Might be moved later
 RUN sed -i 's/^plugins=.*/plugins=(git kubectl azure terraform)/g' $HOME/.zshrc
-WORKDIR /git
 
-#TODO: Add Docker installation
+# Install oh-my-zsh
+# ADD install-ohmyzsh-prereqs.sh .
+# RUN ./install-ohmyzsh-prereqs.sh
+# RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) "
+# RUN chsh -s /usr/bin/zsh
+# Enabling some default plugins. Might be moved later
+# RUN sed -i 's/^plugins=.*/plugins=(git kubectl azure terraform)/g' $HOME/.zshrc
+# WORKDIR /git
