@@ -16,5 +16,10 @@ RUN pacman -S --noconfirm \
  gcc \
  unzip \
  wget \
- ripgrep
+ ripgrep \
+ make \
+ sudo \
+ tree \
+ diffutils \
+ patch
 ADD wsl/etc /etc

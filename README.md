@@ -43,3 +43,14 @@ Being able to run a single script to make a working machine with a dev env I fee
 
     cd images/with-node
     docker build -t oh-my-devops-node .
+
+### Arch and WSL
+
+    cd arch
+    make 
+    make wslexport
+    export tmpfolder=/mnt/c/Users/[my-username]/temp
+    mkdir -p $tmpfolder
+    cp arch.tar $tmpfolder
+    # Start Windows CMD
+    cd C:\users\[my-username]\temp

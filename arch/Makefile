@@ -1,13 +1,7 @@
 DOCKER_BASEIMAGE ?= oh-my-devops
 
 build:
-	docker build . -t $(DOCKER_BASEIMAGE)-wsl
-
-#wsl:
-#	docker build images/base -t $(DOCKER_BASEIMAGE)-wsl --build-arg BASEOS=debian:unstable
-
-#wsl-arch:
-#	docker build images/base -t $(DOCKER_BASEIMAGE)-wsl --build-arg BASEOS=archlinux:latest
+	docker build . --no-cache --pull -t $(DOCKER_BASEIMAGE)-wsl
 
 wslexport:
 	docker create --name tmpcontainer $(DOCKER_BASEIMAGE)-wsl
