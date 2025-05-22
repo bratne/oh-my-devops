@@ -44,13 +44,40 @@ Being able to run a single script to make a working machine with a dev env I fee
     cd images/with-node
     docker build -t oh-my-devops-node .
 
-### Arch and WSL
+### WSL and arch
 
-    cd arch
+#### Prerequisites 
+
+wsl --install -d Debian
+
+Start wsl, and install git and make
+
+    sudo apt-get install git make
+
+Clone this repository 
+
+    mkdir git
+    cd git
+    git clone [this repository]
+
+Build the actual WSL image
+
+    cd oh-my-devops/arch
     make 
     make wslexport
     export tmpfolder=/mnt/c/Users/[my-username]/temp
     mkdir -p $tmpfolder
     cp arch.tar $tmpfolder
+
+#### Import custom WSL Image to WSL
+
     # Start Windows CMD
     cd C:\users\[my-username]\temp
+    # Install the WSL image from file
+    wsl --install --from-file arch.tar
+
+#### Re-import rebuilt image
+
+    # Unregister WSL. NOTE: ALL FILES WILL BE DELETED
+    wsl --unregister Arch
+    # Re-run the Import step above
