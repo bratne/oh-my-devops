@@ -9,5 +9,5 @@ rebuild:
 
 wslexport:
 	docker create --name tmpcontainer $(DOCKER_BASEIMAGE)-wsl
-	docker export --output $TARFILE_FOLDER/arch.tar tmpcontainer
+	docker export --output $(TARFILE_FOLDER)/arch.tar tmpcontainer
 	docker rm tmpcontainer
