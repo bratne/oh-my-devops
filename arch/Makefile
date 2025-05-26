@@ -1,6 +1,9 @@
 DOCKER_BASEIMAGE ?= oh-my-devops
 
 build:
+	docker build . -t $(DOCKER_BASEIMAGE)-wsl
+
+rebuild:
 	docker build . --no-cache --pull -t $(DOCKER_BASEIMAGE)-wsl
 
 wslexport:
