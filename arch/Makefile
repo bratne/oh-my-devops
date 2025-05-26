@@ -1,4 +1,5 @@
 DOCKER_BASEIMAGE ?= oh-my-devops
+TARFILE_FOLDER ?= .
 
 build:
 	docker build . -t $(DOCKER_BASEIMAGE)-wsl
@@ -8,5 +9,5 @@ rebuild:
 
 wslexport:
 	docker create --name tmpcontainer $(DOCKER_BASEIMAGE)-wsl
-	docker export --output arch.tar tmpcontainer
+	docker export --output $TARFILE_FOLDER/arch.tar tmpcontainer
 	docker rm tmpcontainer
