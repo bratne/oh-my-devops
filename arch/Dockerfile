@@ -21,5 +21,10 @@ RUN pacman -S --noconfirm \
  sudo \
  tree \
  diffutils \
- patch
+ patch \
+ fd \
+ python-pip \
+ luarocks \
+ kubectl \
+ kustomize
 ADD wsl/etc /etc
