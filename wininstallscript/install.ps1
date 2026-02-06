@@ -103,10 +103,6 @@ function Configure-WslDistro {
         @("~", "cp `$(wslpath -u '$ScriptRoot') '$linTempPath'")
         @("~", "make -C '$gitDir'"),
     )
-
-        
-        # @("~", "make -C '$gitDir'/arch wslexport"),
-        # @("~", "mv oh-my-devops/arch/arch.tar `wslpath -u '$tempPath'`")
     
     foreach ($step in $steps) {
         $folder, $cmd = $step                
