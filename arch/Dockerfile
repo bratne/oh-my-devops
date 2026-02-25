@@ -27,6 +27,9 @@ RUN pacman -S --noconfirm \
  luarocks \
  kubectl \
  kustomize
+RUN pacman -S --noconfirm jq
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 RUN locale-gen
 ADD wsl/etc /etc
+ADD --chmod=644 wsl/sudoers.d /etc/sudoers.d 
+RUN HOME=/etc/skel sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

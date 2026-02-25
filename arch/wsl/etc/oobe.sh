@@ -31,6 +31,3 @@ while true; do
     fi
   fi
 done
-
-# Install oh-my-zsh for new user
-sudo -u $username sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) --unattended"
