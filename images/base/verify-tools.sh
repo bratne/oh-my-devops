@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-TOOLS_FILE="${1:-required_tools.json}"
+TOOLS_FILE="${1:-required_tools.yaml}"
 
-if ! command -v jq >/dev/null 2>&1; then
-  echo "ERROR: jq is required to parse $TOOLS_FILE"
+if ! command -v yq >/dev/null 2>&1; then
+  echo "ERROR: yq is required to parse $TOOLS_FILE"
   exit 1
 fi
 
@@ -18,7 +18,7 @@ echo
 
 failures=0
 
-count=$(jq '.tools | length' "$TOOLS_FILE")
+count=$(yq '.tools | length' "$TOOLS_FILE")
 
 for i in $(seq 0 $((count - 1))); do
   name=$(jq -r ".tools[$i].name" "$TOOLS_FILE")
