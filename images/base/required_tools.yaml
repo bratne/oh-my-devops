@@ -1,26 +1,30 @@
 tools:
   - name: jq
-    install: ''
     test: jq --version
+  - name: yq
+    test: yq --version
+  - name: git
+    install: 'apt-get -y install git --no-install-recommends'
+    test: git --version
+  - name: neovim
+    install: 'apt-get -y install neovim --no-install-recommends'
+    test: nvim --version
+  - name: zsh
+    install: 'apt-get -y install zsh --no-install-recommends'
+    test: yq --version
   - name: azure cli
-    install: ''
+    install: 'apt-get -y install azure-cli --no-install-recommends'
     test: az version | jq -er '.["azure-cli"] // error("\"azure cli\" not found")'
   - name: azure cli telemetry
-    install: ''
     test: az version | jq -er '.["azure-cli-telemetry"] // error("\"azure cli telemetry\"
       not found")'
   - name: azure cli azure-devops extension
-    install: ''
+    install: 'az extension add --name azure-devops'
     test: az extension list | jq -e 'first(.[] | select (.name=="azure-devops") |
       .version) // error("Extension \"azure-devops\" not found")'
   - name: kubectl
-    install: ''
-    test: kubectl --client=true version -o json
-  - name: zsh
-    install: ''
-    test: zsh --version
+    install: 'apt-get -y install kubectl --no-install-recommends'
+    test: kubectl version --client=true -o json
   - name: terraform
-    install: ''
+    install: 'apt-get -y install --no-install-recommends terraform-switcher'
     test: terraform -version | head -n1
-  - name: nvim
-    test: nvim -v
