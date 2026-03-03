@@ -6,19 +6,10 @@ RUN apt-get install -y sudo --no-install-recommends
 
 WORKDIR /src
 
-# Install Terraform
-# RUN apt-get install -y terraform-switcher
-# RUN echo `terraform-switcher --help` 1>&2
-
-## Terraform installation
-# RUN ./install-terraform-prereqs.sh
-#ADD install-terraform.sh .
-#RUN ./install-terraform.sh
+# Install terraform
 RUN apt-get install -y terraform-switcher
-#ADD install-terraform-verify.sh .
-#RUN ./install-terraform-verify.sh
 
-## Kubernetes client installation
+# Install kubectl
 ADD install-kubectl-prereqs.sh .
 RUN ./install-kubectl-prereqs.sh
 ADD install-kubectl.sh .
@@ -74,7 +65,6 @@ RUN ZDOTDIR="/etc/skel" sh -c "$(curl -fsSL https://raw.githubusercontent.com/oh
 WORKDIR /tmp
 
 RUN az version -o json
-RUN pip install deviceid
 RUN SOMEVAR=$(date); az extension add --name azure-devops --debug
 
 COPY required_tools.json .
