@@ -1,0 +1,36 @@
+{
+  "tools": [
+    {
+      "name": "jq",
+      "test": "jq --version"
+    },
+    {
+      "name": "azure cli",
+      "test": "az version | jq -r \".[\"azure-cli\"]\""
+    },
+    {
+      "name": "azure cli telemetry",
+      "test": "az version | jq -r \".[\"azure-cli-telemetry\"]\""
+    },
+    {
+      "name": "azure cli azure-devops extension",
+      "test": "az extension list | jq -r '.[] | select (.name==\"azure-devops\") | .version'"
+    },
+    {
+      "name": "kubectl",
+      "test": "kubectl --client=true version -o json"
+    },
+    {
+      "name": "zsh",
+      "test": "zsh --version"
+    },
+    {
+      "name": "terraform",
+      "test": "terraform -version | head -n1"
+    },
+    {
+      "name": "nvim",
+      "test": "nvim -v"
+    }
+  ]
+}
