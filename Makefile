@@ -1,11 +1,12 @@
 DOCKER_BASEIMAGE ?= oh-my-devops
 DOCKER_WSLNAME ?= oh-my-devops-wsl
 
-devcontainer:
-	docker build images/base -t $(DOCKER_BASEIMAGE) --build-arg BASEOS=mcr.microsoft.com/devcontainers/base:debian	                                                            
 build:
 	docker build images/base -t $(DOCKER_BASEIMAGE)
 	docker build images/with-node -t $(DOCKER_NODEIMAGE)
+
+devcontainer:
+	docker build images/base -t $(DOCKER_BASEIMAGE) --build-arg BASEOS=mcr.microsoft.com/devcontainers/base:debian	                                                            
 clean:
 	docker image rm $(DOCKER_NODEIMAGE)
 	docker image rm $(DOCKER_BASEIMAGE)

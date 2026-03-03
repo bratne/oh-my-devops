@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -euxo pipefail
 
 TOOLS_FILE="${1:-required_tools.yaml}"
 
@@ -13,7 +13,7 @@ if [[ ! -f "$TOOLS_FILE" ]]; then
   exit 1
 fi
 
-echo "Verifying required tools from $TOOLS_FILE..."
+echo "Verifying required  tools from $TOOLS_FILE..."
 echo
 
 failures=0
@@ -21,8 +21,8 @@ failures=0
 count=$(yq '.tools | length' "$TOOLS_FILE")
 
 for i in $(seq 0 $((count - 1))); do
-  name=$(jq -r ".tools[$i].name" "$TOOLS_FILE")
-  test_cmd=$(jq -r ".tools[$i].test" "$TOOLS_FILE")
+  name=$(yq -r ".tools[$i].name" "$TOOLS_FILE")
+  test_cmd=$(yq -r ".tools[$i].test" "$TOOLS_FILE")
 
   printf "Checking %-15s ... " "$name"
 

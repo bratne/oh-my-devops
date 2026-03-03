@@ -1,4 +1,4 @@
-ARG BASEOS=debian
+ARG BASEOS=debian:unstable
 FROM $BASEOS
 RUN apt-get update
 RUN apt-get upgrade -y
@@ -28,16 +28,6 @@ RUN ./install-kubectl.sh .
 #RUN apt-get -y install python3-azure-cli-core --no-install-recommends
 RUN apt-get -y install azure-cli --no-install-recommends
 
-# ADD install-az-verify.sh .
-# RUN ./install-az-verify.sh .
-
-#ADD install-minikube-prereqs.sh .
-#RUN ./install-terraform-prereqs.sh
-#ADD install-minikube.sh .
-#RUN ./install-minikube.sh
-# ADD install-minikube-verify.sh .
-# RUN ./install-minikube-verify.sh
-
 ## USER INITIALIZATION
 
 RUN apt-get -y install neovim --no-install-recommends
@@ -45,11 +35,8 @@ RUN apt-get -y install neovim --no-install-recommends
 RUN apt-get -y install zsh --no-install-recommends
 RUN apt-get -y install git --no-install-recommends
 RUN apt-get -y install jq --no-install-recommends
-RUN apt-get -y install python3-pip --no-install-recommends
+RUN apt-get -y install yq --no-install-recommends
 
-
-
-#USER neo
 RUN ZDOTDIR="/etc/skel" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh) "
 # Enabling some default plugins. Might be moved later
 #RUN sed -i 's/^plugins=.*/plugins=(git kubectl azure terraform)/g' $HOME/.zshrc
@@ -67,7 +54,8 @@ WORKDIR /tmp
 RUN az version -o json
 RUN SOMEVAR=$(date); az extension add --name azure-devops --debug
 
-COPY required_tools.json .
+COPY required_tools.yaml .
 COPY verify-tools.sh .
-RUN chmod a+x ./verify-tools.sh
-RUN ./verify-tools.sh required_tools.json 
+# RUN chmod a+x ./verify-tools.sh
+RUN echo $PATH
+RUN ./verify-tools.sh required_tools.yaml
