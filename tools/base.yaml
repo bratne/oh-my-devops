@@ -1,0 +1,25 @@
+tools:
+  jq:
+    test: jq --version
+  yq:
+    test: yq --version
+  git:
+    test: git --version
+  neovim:
+    test: nvim --version
+  zsh:
+    test: yq --version
+  azure-cli:
+    test: az version | jq -er '.["azure-cli"] // error("\"azure cli\" not found")'
+  azure-cli-telemetry:
+    test: az version | jq -er '.["azure-cli-telemetry"] // error("\"azure cli telemetry\"
+      not found")'
+  azure-cli-azure-devops-extension:
+    test: az extension list | jq -e 'first(.[] | select (.name=="azure-devops") |
+      .version) // error("Extension \"azure-devops\" not found")'
+  kubectl:
+    test: kubectl version --client=true -o json
+  terraform:
+    test: terraform -version | head -n1
+  cabextract:
+    test: cabextract -v

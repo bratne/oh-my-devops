@@ -1,0 +1,18 @@
+
+tools:
+  git:
+    install: 'apt-get -y install git --no-install-recommends'
+  neovim:
+    install: 'apt-get -y install neovim --no-install-recommends'
+  zsh:
+    install: 'apt-get -y install zsh --no-install-recommends'
+  azure-cli:
+    install: 'apt-get -y install azure-cli --no-install-recommends'
+  azure-cli-azure-devops-extension:
+    install: 'az extension add --name azure-devops'
+  cabextract:
+    install: 'apt-get -y install cabextract'
+  kubectl:
+    install: 'apt-get -y install kubectl --no-install-recommends'
+  terraform:
+    install: 'apt-get -y install --no-install-recommends terraform-switcher'

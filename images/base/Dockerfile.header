@@ -1,0 +1,5 @@
+ARG BASEOS=debian:unstable
+FROM $BASEOS
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get -y install sudo jq yq --no-install-recommends
